@@ -21,7 +21,7 @@
    sudo apt upgrade -y 
    ```
 
-     Na distribuição Linux Pop Os pode ser utilizado também o seguinte comando   :
+Na distribuição Linux Pop Os pode ser utilizado também o seguinte comando   :
 
    ``` 
    sudo apt full-upgrade
