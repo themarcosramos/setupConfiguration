@@ -10,6 +10,7 @@
    ``` 
    sudo rm /var/lib/dpkg/lock-frontend ; sudo rm /var/cache/apt/archives/lock ; 
    ```
+   
 ----------------------------------------------------------------------------------
  ### Atualizar os repositórios
    ``` 
@@ -26,6 +27,7 @@ Na distribuição Linux Pop Os pode ser utilizado também o seguinte comando   :
    ``` 
    sudo apt full-upgrade
    ```
+
 ----------------------------------------------------------------------------------
 ###  Instalação de codecs 
 
@@ -42,6 +44,7 @@ Na distribuição Linux Pop Os pode ser utilizado também o seguinte comando   :
    ``` 
    sudo apt install -y gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-plugins-good libavcodec-extra gstreamer1.0-libav chromium-codecs-ffmpeg-extra libdvd-pkg
    ```
+
 ----------------------------------------------------------------------------------  
 ### Instalar suporte a flatpak 
 
@@ -52,6 +55,7 @@ Na distribuição Linux Pop Os pode ser utilizado também o seguinte comando   :
   ``` 
    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
    ```
+
 ----------------------------------------------------------------------------------
  ### Instalar o suporte pacotes snap
 
@@ -87,11 +91,13 @@ Na distribuição Linux Pop Os pode ser utilizado também o seguinte comando   :
   ``` 
   snap refresh --list
    ```
+
 ----------------------------------------------------------------------------------
  ### Instalar suporte 7zip
   ``` 
   sudo apt-get install p7zip p7zip-full p7zip-rar lzma lzma-dev
    ```
+
 ----------------------------------------------------------------------------------
  ### Instalar openjdk 
 
@@ -111,21 +117,55 @@ Na distribuição Linux Pop Os pode ser utilizado também o seguinte comando   :
    ``` 
   java -version 
    ```
+
 ----------------------------------------------------------------------------------
  ### Instalar google chorme 
    ``` 
   cd ~/Downloads/ && wget -c https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo dpkg -i *.deb
    ```
+
 ----------------------------------------------------------------------------------   
 ### Instalar curl 
    ``` 
   sudo apt  install curl
    ```
+
 ----------------------------------------------------------------------------------   
 ### Instalar o pacote de comandos para internet
    ``` 
   sudo apt install net-tools
    ```
+
+----------------------------------------------------------------------------------
+### Configuração inicial do  Git
+
+ Definir o seu nome de usuário e endereço de e-mail. 
+
+``` 
+   git config --global user.name "Seu nome para exibição"
+   git config --global user.email "seu-email@email.com"
+```
+#### Colorir as linhas
+ Para melhorar a visualização do git no terminal podemos colorir as linhas com o comando abaixo.
+
+``` 
+   git config --global color.ui auto
+   git config --global color.diff auto
+   git config --global color.status auto
+   git config --global color.branch auto
+```
+#### Testando Suas Configurações
+Se você quiser testar as suas configurações, você pode usar o comando
+
+``` 
+   git config --list
+```
+#### Descartar todas as alterações não confirmadas, revertendo-os para o estado do  último commit  
+
+``` 
+  git checkout .
+```
+
 ----------------------------------------------------------------------------------
 ### Instalar o VSCode
 
@@ -152,43 +192,116 @@ Na distribuição Linux Pop Os pode ser utilizado também o seguinte comando   :
 - ``` 
     sudo apt-get install code -y 
    ```
+
 ----------------------------------------------------------------------------------
 ### Instalar o Postman
 
    ``` 
   snap install postman
    ```
+
 ----------------------------------------------------------------------------------
 ### Instalar o Insomnia
 
    ``` 
   sudo snap install insomnia
    ```
+
 ----------------------------------------------------------------------------------
 ### Instalar o mysql-workbench
    ``` 
   sudo snap install mysql-workbench-community
    ```
+
 ----------------------------------------------------------------------------------   
 ### Instalar o DBeaver
    ``` 
- sudo snap install dbeaver-ce
+     sudo snap install dbeaver-ce
    ```
+
 ----------------------------------------------------------------------------------  
+### Criar links simbólicos
+
+```
+   ln -s [arquivo_ou_diretório_destino] [nome_do_link]
+```
+exemplo : 
+
+```
+   ln -s /opt/lampp/htdocs/
+```
+
+#### Criar links simbólicos na  área de trabalho
+```
+   ln -s /home/[usuário]/[arquivo_ou_diretório_destino] /home/[usuário]/Área\ de\ Trabalho/workspace
+```
+
+----------------------------------------------------------------------------------   
 ### Instalar qualquer app .deb e todas sua dependências 
    ``` 
-sudo dpkg -i *.deb ; sudo apt-get install -f -y
+    sudo dpkg -i *.deb ; sudo apt-get install -f -y
    ```
+
+----------------------------------------------------------------------------------
+### Ativar o suporte a AppImage
+
+``` 
+   sudo apt install libfuse2
+ ```
+
+----------------------------------------------------------------------------------
+###  Instalar o  Gear lever
+
+ Um utilitário para gerenciar AppImages 
+
+``` 
+   flatpak install flathub it.mijorus.gearlever
+ ```
+
+----------------------------------------------------------------------------------
+###   Instalar o gdedi
+
+``` 
+   sudo apt install gdebi
+ ```
+
+----------------------------------------------------------------------------------
+###  Corrigi falha no Libdvd-pkg: `apt-get check` 
+
+Para corrigi  execute o seguinte comomandos  : 
+
+``` 
+   sudo dpkg-reconfigure libdvd-pkg
+ ```
+
+ou através desde  comando  :
+
+``` 
+   sudo dpkg --configure -a
+ ```
+
+  seguido por :
+
+``` 
+   sudo apt-get clean
+ ```
+
+ ou pelo a comando :
+
+``` 
+   sudo apt-get install -f
+ ```
 
 ----------------------------------------------------------------------------------
 ### Atualização do sistema e limpeza dos sistema 
    ``` 
  sudo apt update && sudo apt dist-upgrade -y && sudo apt autoclean -y && sudo apt autoremove -y
    ```
+
 ----------------------------------------------------------------------------------
 ### Atualização do sistema geral 
    ``` 
- sudo apt update && sudo apt dist-upgrade -y 
+    sudo apt update && sudo apt dist-upgrade -y 
    ```
 
 ----------------------------------------------------------------------------------
@@ -200,4 +313,56 @@ sudo dpkg -i *.deb ; sudo apt-get install -f -y
 - ``` 
     sudo apt autoremove -y
    ```
+
 ----------------------------------------------------------------------------------
+### Verificar  espeficiaçãoes sobre a memoria ram 
+
+ ``` 
+     dmidecode --type 17|less
+```
+
+----------------------------------------------------------------------------------
+### Desativar inicialização automática do Docker na inicialização
+
+Para os usuários com o Ubuntu 15.04+ (onde o SO usa systemd ), de acordo com o doc na inicialização pode ser desativada por:
+
+ ``` 
+     sudo systemctl disable docker
+```
+Nos sistemas desde o Ubuntu 16.04+ (onde o SO usa systemd), de acordo com o documento , a inicialização automática na inicialização pode ser desativada por:
+
+``` 
+   sudo systemctl disable docker.service
+   sudo systemctl disable docker.socket
+ ```
+
+Iniciar o serviço do Docker
+
+ ``` 
+   sudo systemctl start docker 
+ ```
+Para parar o serviço do Docker
+
+ ``` 
+   sudo systemctl stop docker
+ ```
+
+ Verificar o status do serviço do Docker 
+
+ ``` 
+   sudo systemctl status docker
+ ```
+ Suba os containers do Docker
+
+  ``` 
+    docker-compose up -d
+  ```
+ Parar o containers 
+
+  ``` 
+    docker-compose down
+  ```
+  ou 
+  ``` 
+   docker stop $(docker ps -aq)
+  ```
