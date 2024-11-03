@@ -1,12 +1,11 @@
 # Setup Configuration
 
 > Configuração do ambiente de desenvolvimento
->> Testado na distribuições linux:
->>> - Pop Os
+>> Testado nas distribuições linux:
 >>> - Ubuntu  
+>>> - Pop Os
 
 ### Removendo travas eventuais do apt
-
    ``` 
    sudo rm /var/lib/dpkg/lock-frontend ; sudo rm /var/cache/apt/archives/lock ; 
    ```
@@ -22,15 +21,13 @@
    sudo apt upgrade -y 
    ```
 
-Na distribuição Linux Pop Os pode ser utilizado também o seguinte comando   :
-
+Na distribuição linux Pop Os pode ser utilizado também o seguinte comando   :
    ``` 
    sudo apt full-upgrade
    ```
 
 ----------------------------------------------------------------------------------
 ###  Instalação de codecs 
-
    ``` 
    sudo apt install ubuntu-restricted-extras 
    ```
@@ -47,7 +44,6 @@ Na distribuição Linux Pop Os pode ser utilizado também o seguinte comando   :
 
 ----------------------------------------------------------------------------------  
 ### Instalar suporte a flatpak 
-
    ``` 
    sudo apt install flatpak
    ```
@@ -58,7 +54,6 @@ Na distribuição Linux Pop Os pode ser utilizado também o seguinte comando   :
 
 ----------------------------------------------------------------------------------
  ### Instalar o suporte pacotes snap
-
   1. atualize o sistema 
   2. execute o seguinte comando :
    ``` 
@@ -78,7 +73,6 @@ Na distribuição Linux Pop Os pode ser utilizado também o seguinte comando   :
 
 ----------------------------------------------------------------------------------
  ### Ataualizar pelo terminal o pacotes  snap execurte o seguinte comando :
-  
   - ### Flatpaks
   
     ``` 
@@ -100,7 +94,6 @@ Na distribuição Linux Pop Os pode ser utilizado também o seguinte comando   :
 
 ----------------------------------------------------------------------------------
  ### Instalar openjdk 
-
   1. Adicione o repositório 
    ``` 
    sudo add-apt-repository ppa:openjdk-r/ppa
@@ -138,7 +131,6 @@ Na distribuição Linux Pop Os pode ser utilizado também o seguinte comando   :
 
 ----------------------------------------------------------------------------------
 ### Configuração inicial do  Git
-
  Definir o seu nome de usuário e endereço de e-mail. 
 
 ``` 
@@ -167,8 +159,19 @@ Se você quiser testar as suas configurações, você pode usar o comando
 ```
 
 ----------------------------------------------------------------------------------
-### Instalar o VSCode
+### instalar o gitkraken
 
+ Baixe o aplicativo através deste comando:
+``` 
+  wget https://release.gitkraken.com/linux/gitkraken-amd64.deb 
+```
+Após isso, instale o aplicativo com o comando:
+``` 
+  sudo dpkg -i gitkraken-amd64.deb
+```
+
+----------------------------------------------------------------------------------
+### Instalar o VSCode
  - ``` 
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
    ```
@@ -195,14 +198,12 @@ Se você quiser testar as suas configurações, você pode usar o comando
 
 ----------------------------------------------------------------------------------
 ### Instalar o Postman
-
    ``` 
   snap install postman
    ```
 
 ----------------------------------------------------------------------------------
 ### Instalar o Insomnia
-
    ``` 
   sudo snap install insomnia
    ```
@@ -238,9 +239,9 @@ exemplo :
 
 ----------------------------------------------------------------------------------   
 ### Instalar qualquer app .deb e todas sua dependências 
-   ``` 
-    sudo dpkg -i *.deb ; sudo apt-get install -f -y
-   ```
+  ``` 
+   sudo dpkg -i *.deb ; sudo apt-get install -f -y
+  ```
 
 ----------------------------------------------------------------------------------
 ### Ativar o suporte a AppImage
@@ -269,25 +270,21 @@ exemplo :
 ###  Corrigi falha no Libdvd-pkg: `apt-get check` 
 
 Para corrigi  execute o seguinte comomandos  : 
-
 ``` 
    sudo dpkg-reconfigure libdvd-pkg
  ```
 
 ou através desde  comando  :
-
 ``` 
    sudo dpkg --configure -a
  ```
 
   seguido por :
-
 ``` 
    sudo apt-get clean
  ```
 
  ou pelo a comando :
-
 ``` 
    sudo apt-get install -f
  ```
@@ -303,10 +300,9 @@ ou através desde  comando  :
    ``` 
     sudo apt update && sudo apt dist-upgrade -y 
    ```
-
+   
 ----------------------------------------------------------------------------------
 ### limpeza dos sistema
-
 - ``` 
     sudo apt autoclean
    ```
@@ -315,21 +311,19 @@ ou através desde  comando  :
    ```
 
 ----------------------------------------------------------------------------------
-### Verificar  espeficiaçãoes sobre a memoria ram 
-
+### Verificar espeficiaçãoes sobre a memoria ram 
  ``` 
      dmidecode --type 17|less
 ```
 
 ----------------------------------------------------------------------------------
 ### Desativar inicialização automática do Docker na inicialização
-
-Para os usuários com o Ubuntu 15.04+ (onde o SO usa systemd ), de acordo com o doc na inicialização pode ser desativada por:
+Para os usuários com o Ubuntu 15.04+ :
 
  ``` 
      sudo systemctl disable docker
 ```
-Nos sistemas desde o Ubuntu 16.04+ (onde o SO usa systemd), de acordo com o documento , a inicialização automática na inicialização pode ser desativada por:
+Nos sistemas desde o Ubuntu 16.04+ :
 
 ``` 
    sudo systemctl disable docker.service
@@ -365,4 +359,10 @@ Para parar o serviço do Docker
   ou 
   ``` 
    docker stop $(docker ps -aq)
+  ```
+
+----------------------------------------------------------------------------------
+### Habilita os ppas  
+ ``` 
+   sudo apt install software-properties-common -y 
   ```
